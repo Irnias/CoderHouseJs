@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <fieldset>
+        <form id="form-todo">
+            <input type="text" name="title">
+            <button type="submit" id="btnAdd">Add</button>
+        </form>
+
+        <ul id='todo-container'></ul>
+    </fieldset>
+    <hr>
+    <input type="text" id="keyText" oninput="capturarInput(event)" onkeypress="capturarEnter(event);">
+    <script>
+
+        function capturarInput(event) {
+            console.log(event);
+        }
+
+        function capturarEnter(event) {
+            console.log(event);
+        }
+
+        let todo = [];
+        let todoContainer = document.getElementById('todo-container');
+        let formToDo = document.getElementById('form-todo');
+        formToDo.addEventListener('submit', function(event) {
+            event.preventDefault();
+            let title = event.target.elements.title.value
+            todo.push(title);
+            renderTodo();
+        })
+
+        function renderTodo() {
+            if(todo.length > 0) {
+                todoContainer.appendChild(buildItem(todo.pop()));
+            }
+        }
+
+        function buildItem(todoItem) {
+            let item = document.createElement('li');
+            item.textContent = todoItem;
+            return item;
+        }
+
+        //renderTodo();
+    </script>
+</body>
+</html>

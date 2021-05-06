@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style></style>    
+</head>
+<body>
+    <div>
+        <h2 id="title">Hola mundo</h2>
+        <p class="content">1 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse felis velit, bibendum id congue sit amet, condimentum in erat.</p>
+    </div>
+    <div>
+        <h3>Seleccione su menú</h3>
+        <p class="content">2 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse felis velit, bibendum id congue sit amet, condimentum in erat.</p>
+        <ul id='menu-container'></ul>
+    </div>
+    <script>
+        let date = new Date();
+        let currentHour = date.getHours();
+        let titleContainer = document.getElementById('title');
+        let menuContainer = document.getElementById('menu-container');
+
+        let hours = [{
+                open: 6,
+                close: 12,
+                message: 'Hora del desayuno'
+            },{
+                open: 12,
+                close: 15,
+                message: 'Hora del almuerzo'
+            },{
+                open: 15,
+                close: 20,
+                message: 'Hora de la merienda'
+            },{
+                open: 20,
+                close: 24,
+                message: 'Hora del desayuno'
+            }
+        ]
+        
+        let menu = [{
+                name: 'Hamburguesa',
+                price: 10
+            },{
+                name: 'Pizza',
+                price: 15
+            },{
+                name: 'Empanadas',
+                price: 20
+            }];
+
+        let msg = 'Cerrado';
+
+        hours.forEach(hour => {
+            if(currentHour >= hour.open && currentHour < hour.close) {
+                msg = hour.message;
+            }            
+        });
+
+        titleContainer.textContent = msg;
+
+        menu.forEach(menuItem => {
+            menuContainer.appendChild(buildItem(menuItem.name));
+        });
+
+        function buildItem(menuItem) {
+            let item = document.createElement('li');
+            item.textContent = menuItem;
+            return item;
+        }
+        
+
+    </script>    
+</body>
+</html>

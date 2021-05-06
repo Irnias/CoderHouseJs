@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AJAX</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.2/dist/jquery.validate.min.js"></script>
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-4">
+                <form name="searchForm">
+                    <div class="form-group">
+                        <label>Buscar</label>
+                        <input type="text" name="search" class="form-control" placeholder="Buscar">
+                    </div>
+                    <button type="submit" class="btn btn-primary">Buscar</button>
+                </form>
+            </div>
+            <div class="col-sm-8">
+                <div class="row" id="productsContainer">
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Modal -->
+    <div class="modal fade" id="productModal" tabindex="-1">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Product</h5>
+                    <button type="button" class="close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <img id="thumbnail">
+                    <p class="description"></p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+
+        function getCardHtml(product) {
+            return `
+                <div class="col-sm-4">
+                    <div class="card">
+                        <a href="#" class="imageProduct" onClick="getProduct('${product.id}', '${product.thumbnail}')"><img src="${product.thumbnail}" width="100%"></a>
+                        <div class="card-body">
+                            <p class="card-text">${product.title}</p>
+                            <p class="card-text">$${product.price}</p>
+                        </div>
+                    </div>
+                </div>             
+            `;
+        }
+
+        function renderProducts(products) {
+            $('#productsContainer').empty();
+            products.forEach(product => {
+                $('#productsContainer').append(getCardHtml(product));
+            });
+        }
+
+        function searchProducts(keySearch) {
+            const mlSearch = `https://api.mercadolibre.com/sites/MLA/search`;
+
+            $.ajax({
+                method: "POST",
+                url: mlSearch,
+                data: {
+                    q : keySearch,
+                    firstname: 'firstname',
+                    lastname: 'lastname'
+                }
+            }).done((data) => {
+                renderProducts(data.results);
+            }).fail((error) => {
+                console.log(error);
+            });
+        }
+
+        function getProduct(id, thumbnail) {
+
+            const urlProduct = `https://api.mercadolibre.com/items/${id}/description`;
+            $.ajax({
+                method: "GET",
+                url: urlProduct
+            }).done((data) => {
+                
+                $('.description').html(data.plain_text);
+                $('#thumbnail').attr('src', thumbnail);
+                $('#productModal').modal('show');
+
+            }).fail((error) => {
+                console.log(error);
+            });
+        }
+
+        $(document).ready(() => {
+
+            searchProducts('playstation');
+
+            $("form[name='searchForm']").validate({
+                rules: {
+                    search: {
+                        required: true,
+                        minlength: 3
+                    }
+                },
+                messages: {
+                    search: {
+                        required: 'El campo de busqueda es obligatorio',
+                        minlength: 'El campo debe tener un minimo de 3 caracteres'
+                    }
+                },
+                submitHandler: function (event) {
+                    const keySearch = event.elements.search.value;
+                    searchProducts(keySearch);
+                }
+            })
+        })
+    </script>
+</body>
+
+</html>

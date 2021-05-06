@@ -1,0 +1,1 @@
+const productComponent = "Lista de productos";

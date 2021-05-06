@@ -1,0 +1,19 @@
+[{
+    "name" : "Playstation",
+    "description" : "",
+    "price" : 1,
+    "available" : true,
+    "tags" : ["consola", "sony", "gaming"]
+},{
+    "name" : "Iphone",
+    "description" : "",
+    "price" : 1,
+    "available" : true,
+    "tags" : ["phone", "apple"]
+},{
+    "name" : "Chromecast",
+    "description" : "",
+    "price" : 1,
+    "available" : false,
+    "tags" : ["tv", "google"]
+}]

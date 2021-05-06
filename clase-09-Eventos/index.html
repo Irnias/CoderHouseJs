@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <fieldset>
+        <legend>click</legend>
+        <input type="button" value="Clickea el boton" onclick="onBtnClick()" />
+    </fieldset>
+
+    <fieldset>
+        <legend>dblclick</legend>
+        <input type="button" value="Clickea el boton x 2" ondblclick="onBtnClick()" />
+    </fieldset>
+
+    <fieldset>
+        <legend>blur</legend>
+        <input type="text" name="name" onblur="onBlur()">
+    </fieldset>    
+
+    <fieldset>
+        <legend>focus</legend>
+        <input type="text" name="name" onfocus="onFocus()">
+    </fieldset>
+    
+    <fieldset>
+        <legend>input</legend>
+        <input type="text" name="name" oninput="onInput(event)">
+        <hr>
+        <input type="text" name="lastname" oninput="onInput(event)">
+    </fieldset>
+    
+    <fieldset>
+        <form onsubmit="sendSearch(event)">
+            <input type="text" name="searchKey" oninput="enableButton(event)">
+            <input type="checkbox" name="advancedSearch">
+            <button type="submit" id="btnSearch" disabled>Search</button>
+        </form>
+    </fieldset>
+
+    <fieldset>
+        <input type="button" value="Clickea el boton" id="btnClick" />
+    </fieldset>
+
+    <script>
+        function onBtnClick() {
+            alert('Mensaje en el click');
+        }
+
+        function onBlur() {
+            console.log('blur');
+        }
+
+        function onFocus() {
+            console.log('onFocus');
+        }        
+
+        function onInput(event) {
+            console.log(event.target.value)
+
+            console.log(event.target.name, event.target.value)
+        }    
+
+        function enableButton(event) {
+            let btnSearch = document.getElementById('btnSearch');
+            btnSearch.disabled = !(event.target.value.length > 3);
+            
+        }
+
+        function sendSearch(event) {
+            event.preventDefault();
+            console.log(event.target.elements.searchKey.value);
+            console.log(event.target.elements.advancedSearch.checked);
+        }
+
+        let btnClick = document.getElementById('btnClick');
+        btnClick.addEventListener('click', function(){
+            alert('Mensaje en el click 2');
+        });
+    </script>
+</body>
+</html>

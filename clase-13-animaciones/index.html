@@ -1,0 +1,124 @@
+<html>
+
+<head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.2/dist/jquery.validate.min.js"></script>
+
+    <script>
+        $(document).ready(() => {
+
+            $("#step2").hide();
+            $('#step1Label').css('font-weight', 'bold');
+
+            $("form[name='step1']").validate({
+                rules: {
+                    email: {
+                        required: true,
+                        email: true
+                    },
+                    password: {
+                        required: true,
+                        minlength: 5
+                    }
+                },
+                messages: {
+                    email: {
+                        required: 'El campo email es obligatorio',
+                        email: 'Ingrese un email valido'
+                    },
+                    password: {
+                        required: 'El campo password es obligatorio',
+                        minlength: 'El password debe tener un minimo de 5 caracteres'
+                    }            
+                },
+                submitHandler: function(form) {
+                    $("#step1").slideUp("slow", function() {
+                        $("#step2").slideDown("slow", function(){
+                            $('#step1Label').css('font-weight', 'normal');
+                            $('#step2Label').css('font-weight', 'bold');
+                        })
+                    });                    
+                }                
+            });
+            
+            $("form[name='step2']").validate({
+                rules: {
+                    apellido: {
+                        required: true,
+                    },
+                    nombre: {
+                        required: true,
+                    }
+                },
+                messages: {
+                    apellido: {
+                        required: 'El campo apellido es obligatorio',
+                    },
+                    nombre: {
+                        required: 'El campo nombre es obligatorio',
+                    }            
+                },
+                submitHandler: function(form) {
+                    $("#step2").slideUp("slow", function() {
+                        $('#step2Label').css('font-weight', 'normal')
+                        $('#step3Label').css('font-weight', 'bold')
+                        $('#resumeName').html($('input[name="nombre"]').val());
+                        $('#resumeEmail').html($('input[name="email"]').val());
+                    });                    
+                }                
+            });            
+        })
+    </script>
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                      <li class="breadcrumb-item" id="step1Label">Paso 1</li>
+                      <li class="breadcrumb-item" id="step2Label">Paso 2</li>
+                      <li class="breadcrumb-item" id="step3Label">Resumen</li>
+                    </ol>
+                  </nav>
+            </div>
+            <div class="col-sm-12" id="step1">
+                <form action="#" name="step1">
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Email</label>
+                        <input type="email" name="email" id="email" class="form-control" placeholder="Enter email">
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputPassword1">Password</label>
+                        <input type="password" name="password" id="password" class="form-control" placeholder="Password">
+                    </div>
+                    <button type="submit" class="btn btn-primary">Siguiente</button>
+                </form>
+            </div>
+
+            <div class="col-sm-12" id="step2">
+                <form action="#" name="step2">
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Apellido</label>
+                        <input type="text" name="apellido" id="apellido" class="form-control" placeholder="Apellido">
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputPassword1">Nombre</label>
+                        <input type="text" name="nombre" id="nombre" class="form-control" placeholder="Nombre">
+                    </div>
+                    <button type="submit" class="btn btn-primary">Siguiente</button>
+                </form>
+            </div>
+            <div class="col-sm-4" id="resume">
+                <h3 id="resumeName"></h3>
+                <p id="resumeEmail"></p>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

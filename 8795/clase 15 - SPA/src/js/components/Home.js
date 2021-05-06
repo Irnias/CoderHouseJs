@@ -1,0 +1,1 @@
+const homeComponent = `<p>soy el home del spa</p>`

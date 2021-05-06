@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <fieldset>
+        <form id="form-todo">
+            <input type="text" name="title">
+            <button type="submit" id="btnAdd">Add</button>
+        </form>
+        <ul id='todo-container'></ul>
+    </fieldset>
+    <script>
+        const KEY_STORAGE = 'toDoData';
+        let todo = load(KEY_STORAGE);
+        console.log('todo', todo);
+        let formTodo = document.getElementById('form-todo');
+        let todoContainer = document.getElementById('todo-container');
+        formTodo.addEventListener('submit', (event)=>{
+            event.preventDefault();
+            addTodo(event.target.elements.title)
+        })
+        function addTodo(field) {
+            todo.push(field.value);
+            field.value = '';
+            save(todo);
+            renderTodo();
+        }
+        function renderTodo() {
+            let lastItem = todo[todo.length-1];
+            todoContainer.appendChild(buildItem(lastItem));
+        }
+        function buildItem(todoItem) {
+            let item = document.createElement('li');
+            item.textContent = todoItem;
+            return item;
+        }
+        function save(toDoData) {
+            localStorage.setItem(KEY_STORAGE, JSON.stringify(toDoData));
+        }        
+        function load(storageKey){
+            if(localStorage.getItem(storageKey)) {
+                return JSON.parse(localStorage.getItem(storageKey));
+            } else {
+                return [];
+            }
+        }        
+        function initTodo() {
+            todo.forEach(item => {
+                todoContainer.appendChild(buildItem(item));
+            });
+        }
+        initTodo();
+    </script>
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script>
+        $('document').ready(() => {
+            $form = $('form[name="form"]');
+            console.log($form.serializeArray());
+
+            $firstname = $('input[name=firstname]');
+            console.log($firstname.val());
+
+            $gender = $('input[name=gender]');
+            console.log($gender.val());
+
+            $terms = $('input[name=terms]');
+            console.log($terms.is(':checked'));
+        })
+
+        
+    </script>
+</head>
+
+<body>
+    
+    <form name="form">
+        <input type="text" name="firstname" value="firstname"/>
+        <input type="text" name="lastname" value="lastname" />
+        <input type="radio" value="F" name="gender" checked /> F
+        <input type="radio" value="M" name="gender" /> M
+        <input type="checkbox" name="terms" checked>
+        <input type="submit" value="Save">
+    </form>
+    
+</body>
+
+</html>

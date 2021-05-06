@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style></style>    
+</head>
+<body>
+    <div>
+        <h2 id="title">Cerrado</h2>
+        <p id="content1">-</p>
+    </div>
+    <div>
+        <h3>Seleccione su menú</h3>
+        <p class="content">Suspendisse felis velit, bibendum id congue sit amet, condimentum in erat.</p>
+        <ul id="menu-container"></ul>
+        <button id="btnSelect">Seleccionar</button>
+    </div>
+    <script>
+        let date = new Date();
+        let currentHour = date.getHours();
+        let titleContainer = document.getElementById('title');
+        let content1 = document.getElementById('content1');
+
+        let hours = [
+            [6, 12, 'Hora <s>del desayuno</s>','Lorem ipsum dolor'],
+            [12, 15, 'Hora del almuerzo', 'dolor sit amet'],
+            [15, 20, 'Hora de la merienda', 'consectetur'],
+            [20, 23, '<s>Hora de la cena</s>', 'adipiscing elit.']
+        ];
+
+
+
+        let msg = 'Cerrado';
+        let contentMsg = '-';
+
+        hours.forEach(hour => {
+            if(currentHour >= hour[0] && currentHour < hour[1]) {
+                msg = hour[2];
+                contentMsg = hour[3];
+            }            
+        })
+
+        titleContainer.innerHTML = msg;
+        content1.innerHTML = contentMsg;
+
+        let menuContainer = document.getElementById('menu-container');
+
+        let menu = [
+            'Hamburguesa', 'Pizza', 'Empanadas', 'Pollo'
+        ];
+
+        menu.forEach(menuItem => {
+            menuContainer.appendChild(buildItem(menuItem));
+        });
+
+        function buildItem(menuItem) {
+            let item = document.createElement('li');
+            item.textContent = menuItem;
+            return item;
+        }
+
+        let btnSelect = document.getElementById('btnSelect');
+        btnSelect.addEventListener('click', () => {
+            alert('CLICK');
+        })
+
+    </script>    
+</body>
+</html>

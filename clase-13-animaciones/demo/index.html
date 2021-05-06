@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.2/dist/jquery.validate.min.js"></script>
+    <style>
+        .error {
+            text-decoration: underline;
+            font-size: 10px;
+            color: red;
+        }
+
+        .label-bold {
+            font-weight: bold;
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    
+</body>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item" id="step1Label">Paso 1</li>
+                        <li class="breadcrumb-item" id="step2Label">Paso 2</li>
+                        <li class="breadcrumb-item" id="step3Label">Resumen</li>                        
+                    </ol>
+                </nav>
+            </div>
+            
+            <!-- STEP 1 -->
+
+            <div class="col-sm-12" id="step1">
+                <form name="step1">
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Email</label>
+                        <input type="email" name="email" id="email" class="form-control" placeholder="Enter email">
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputPassword1">Password</label>
+                        <input type="password" name="password" id="password" class="form-control" placeholder="Password">
+                    </div>
+                    <button type="submit" class="btn btn-primary">Siguiente</button>
+                </form>
+            </div>     
+            
+            <!-- STEP 2 -->
+
+            <div class="col-sm-12" id="step2">
+                <form action="#" name="step2">
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Apellido</label>
+                        <input type="text" name="apellido" id="apellido" class="form-control" placeholder="Apellido">
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputPassword1">Nombre</label>
+                        <input type="text" name="nombre" id="nombre" class="form-control" placeholder="Nombre">
+                    </div>
+                    <button type="submit" class="btn btn-primary">Siguiente</button>
+                </form>
+            </div>
+
+            <div class="col-sm-4" id="resume">
+                <h3 id="resumeName"></h3>
+                <p id="resumeEmail"></p>
+            </div>
+            
+            <div class="col-sm-12">
+                <button id="scroll">Scroll</button>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec ac ullamcorper sapien, at dignissim mi. Praesent quis eros ex. Nulla non dolor purus. Vestibulum lacinia mauris odio, quis molestie lectus vestibulum nec. Praesent nec magna maximus, congue magna eu, venenatis nulla. Proin ultricies, orci euismod rhoncus pretium, eros sem accumsan neque, non convallis enim quam et nibh. Sed non hendrerit augue. Nulla vel ex tortor.
+
+                Duis est quam, fringilla non augue eget, malesuada tristique erat. Duis nec commodo ligula. Praesent a ultrices nibh. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Sed eu lorem vitae ante iaculis faucibus vel vitae neque. Curabitur aliquam, orci id feugiat porttitor, nisl justo euismod eros, at efficitur leo eros dapibus purus. Pellentesque consequat mauris non sapien hendrerit rhoncus. Quisque tempus erat quis faucibus suscipit. Nam risus orci, lobortis et lorem nec, porta convallis odio. Aenean id dapibus lacus. In hac habitasse platea dictumst. Duis turpis urna, sodales ut pellentesque rutrum, volutpat in turpis. Praesent quis cursus lacus. Nunc fringilla laoreet lacus ac suscipit. Integer ornare enim mi, ac tristique arcu feugiat quis.
+                
+                Mauris eleifend ante viverra, porttitor orci sit amet, hendrerit elit. Mauris at enim non neque auctor efficitur. Praesent feugiat malesuada ex, nec interdum nisl tincidunt eu. Donec vel enim massa. Fusce id dapibus enim. Pellentesque leo tellus, vulputate finibus erat non, commodo mattis mauris. Integer auctor faucibus tristique. Nunc lacinia, leo nec facilisis varius, sapien nulla egestas lacus, id sollicitudin felis nisl id felis. Proin ut nunc at enim maximus mollis. Integer elit augue, imperdiet in arcu sed, aliquam tincidunt urna. Nulla rhoncus, enim non egestas elementum, nunc tellus dictum odio, et condimentum quam leo consequat ante.
+                
+                Nullam porta nibh quis velit iaculis, non sagittis sapien rhoncus. Donec malesuada, lorem lobortis fermentum fermentum, arcu nisi tristique diam, vitae cursus leo libero non dolor. Nulla ullamcorper accumsan ante sagittis malesuada. Integer tortor purus, tincidunt non auctor at, malesuada id est. Integer eget suscipit justo. Etiam rutrum, sem vel commodo aliquam, nisi lectus gravida eros, sed egestas orci risus at odio. Donec laoreet urna a dolor egestas sagittis. Integer non dolor faucibus neque rhoncus vehicula. Aenean convallis sodales laoreet. Aenean at volutpat eros. Pellentesque sollicitudin lacus nisl, a ultricies urna finibus a. Phasellus ultricies vitae risus eget semper. Integer quis fermentum tellus, ut lobortis nunc.
+                <h1 id="seccionContacto">Contacto</h1> 
+                <a id="btnBack">Volver</a><br>
+                Nam condimentum leo ac quam vulputate congue non eu purus. Nam pretium aliquam nisl, non rutrum est. Vestibulum non metus lorem. Nullam consectetur, massa quis faucibus aliquam, purus ipsum viverra quam, id egestas ipsum nibh vitae velit. Integer placerat a lectus a tristique. Aenean sit amet orci dapibus, malesuada risus eget, hendrerit urna. Donec faucibus id ipsum at egestas. Maecenas hendrerit varius euismod. Nulla porttitor convallis pulvinar. Morbi luctus dui eu tellus fringilla suscipit. Aenean euismod interdum mauris et rhoncus.            
+            </div>
+
+        </div>
+    </div>
+    <script>
+        $('document').ready(()=> {
+            
+            $('#scroll').click(()=> {
+                $('html, body').animate({
+                    scrollTop: $("#seccionContacto").offset().top
+                }, 2000);
+            });
+
+            $('#btnBack').click(()=> {
+                $('html, body').animate({
+                    scrollTop: 0
+                }, 2000);
+            });            
+
+            $('#step2').hide();
+            $('#step1Label').addClass('label-bold');
+            form1 = null;
+            form2 = null;
+            
+            $("form[name='step1']").validate({
+                rules: {
+                    email: {
+                        required: true,
+                        email: true
+                    },
+                    password: {
+                        required: true,
+                        minlength: 5
+                    }
+                }, 
+                messages: {
+                    email: {
+                        required: 'El campo email es obligatorio',
+                        email: 'Ingrese un email valido'
+                    },
+                    password: {
+                        required: 'El campo password es obligatorio',
+                        minlength: 'El password debe tener un minimo de 5 caracteres'
+                    }            
+                },
+                submitHandler: (form) => {
+                    form1 = form;
+                    $('#step1').slideUp("slow", ()=>{
+                        $("#step2").slideDown("slow", () => {
+                            $('#step1Label').removeClass('label-bold');
+                            $('#step2Label').addClass('label-bold');
+                        });
+                    });
+                }
+            });
+
+            $("form[name='step2']").validate({
+                rules: {
+                    apellido: {
+                        required: true,
+                    },
+                    nombre: {
+                        required: true,
+                    }
+                },
+                messages: {
+                    apellido: {
+                        required: 'El campo apellido es obligatorio',
+                    },
+                    nombre: {
+                        required: 'El campo nombre es obligatorio',
+                    }            
+                },
+                submitHandler: function(form) {
+                    form2 = form;
+
+                    $("#step2").slideUp("slow", ()=> {
+                        $('#step2Label').removeClass('label-bold');
+                        $('#step3Label').addClass('label-bold');
+
+                        const formFullData = {
+                            email : form1.elements.email.value,
+                            apellido: form2.elements.apellido.value,
+                            nombre: form2.elements.nombre.value
+                        };
+
+                        $('#resumeName').html(formFullData.nombre);
+                        $('#resumeEmail').html(formFullData.email);
+
+                    });                    
+                }                
+            });             
+            
+        })
+    </script>
+</html>

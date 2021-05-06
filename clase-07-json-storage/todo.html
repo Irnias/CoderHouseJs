@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <fieldset>
+        <form id="form-todo">
+            <input type="text" name="title">
+            <button type="submit" id="btnAdd">Add</button>
+        </form>
+
+        <ul id='todo-container'></ul>
+    </fieldset>
+    
+    <script>
+        let todo = load('toDoData');
+        let todoContainer = document.getElementById('todo-container');
+        let formToDo = document.getElementById('form-todo');
+
+        formToDo.addEventListener('submit', function(event) {
+            event.preventDefault();
+            let title = event.target.elements.title.value
+            addTodo(title);
+        })
+
+        function save(toDoData) {
+            sessionStorage.setItem('toDoData', JSON.stringify(toDoData));
+        }
+
+        function load(storageKey){
+            if(sessionStorage.getItem(storageKey)) {
+                return JSON.parse(sessionStorage.getItem(storageKey));
+            } else {
+                return [];
+            }
+        }
+
+        function addTodo(title) {
+            todo.push(title);
+            if(todo.length > 0) {
+                todoContainer.appendChild(buildItem(todo[todo.length-1]));
+            }
+            save(todo);
+        }
+
+        function buildItem(todoItem) {
+            let item = document.createElement('li');
+            item.textContent = todoItem;
+            return item;
+        }
+
+        function renderTodo() {
+            todo.forEach(item => {
+                todoContainer.appendChild(buildItem(item));
+            });
+        }
+
+        renderTodo();
+    </script>
+</body>
+</html>

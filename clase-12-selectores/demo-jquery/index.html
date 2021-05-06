@@ -1,0 +1,41 @@
+<html>
+    <head>
+        <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+        <script src="https://code.jquery.com/jquery-3.1.0.js"></script>
+        <script src="./assets/scripts/app.js"></script>
+    </head>
+    <body>
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12"><h2>jQuery</h2></div>
+                <div class="col-sm-4" id="column-products">
+                    <ul class="list-group" id="productsContainer"></ul>
+                </div>
+                <div class="col-sm-4" id="column-order" style="display: none;">
+                    <ul class="list-group" id="orderContainer"></ul>
+                    <div class="col-sm-12">
+                        
+                            <fieldset>
+                                <h2 id="price-display"></h2>
+                                
+                                <input type="radio" name="pay" value="C" checked /> Credito
+                                <input type="radio" name="pay" value="D" /> Debito
+                                <input type="radio" name="pay" value="E" /> Efectivo
+                                
+                                <input type="text" name="comment" class="form-control" />
+
+                                <button type="button" class="btn btn-block btn-primary" id="btnConfirm">Confirmar pedido</button>
+                            </fieldset>
+                        
+                    </div>                    
+                </div>
+                <div class="col-sm-4" id="column-detail" style="display: none;">
+                    <h2>Resumen</h2>
+                    <p>Metodo de pago: <span id="pay-display"></span></p>
+                    <p>Comentarios: <span id="comment-display"></span></p>                    
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

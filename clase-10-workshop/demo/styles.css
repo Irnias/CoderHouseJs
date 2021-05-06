@@ -1,0 +1,9 @@
+#productContainer, #selectedProductsContainer {
+    width: 45%;
+    border: 1px solid #ccc;
+    display: inline-block;
+}
+
+#selectedProductsContainer {
+    float: right;
+}

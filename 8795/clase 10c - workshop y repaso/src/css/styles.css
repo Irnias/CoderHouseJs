@@ -1,0 +1,9 @@
+#product-container, #productos-en-carrito  {
+    width: 45%;
+    border: 1px solid #ccc;
+    display: inline-block;
+}
+
+#productos-en-carrito {
+    float: right;
+}

@@ -1,0 +1,11 @@
+body{
+    height: 2000px;
+}
+.back{
+    position: absolute;
+    width: 100%;
+    top: 100px;
+}
+#back1 { background: coral; height: 2000px;}
+#back2 { background: cornflowerblue; height: 300px;}
+#back3 { background: blue; height: 100px;}
