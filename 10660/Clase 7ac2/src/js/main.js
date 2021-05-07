@@ -8,7 +8,6 @@ const searchProducts = (keySearch) => {
         }
     }
     ).done( (data) => {
-        console.log(data.results);
         renderProducts(data.results);
         datosGlobales = data.results;
     }).fail( (error)=>{
@@ -23,7 +22,7 @@ function getCardHtml(product) {
                 <a href="#" class="imageProduct" onClick="getProduct('${product.id}', '${product.thumbnail}')"><img src="${product.thumbnail}" width="100%"></a>
                 <div class="card-body">
                     <p class="card-text">${product.title}</p>
-                    <p class="card-text">$${product.price}</p>
+                    <p class="card-text">${product.price}</p>
                 </div>
             </div>
         </div>             
@@ -36,13 +35,6 @@ function renderProducts(products) {
         $('#productsContainer').append(getCardHtml(product));
     });
 }
-
-// $("form[name='searchForm']").click( (event) => {
-//     event.preventDefault();
-//     console.log(event.currentTarget.elements.search.value)
-//     //searchProducts(event.currentTarget.elements.search.value);
-// })
-
 
 $("form[name='searchForm']").validate(
     {
@@ -68,7 +60,7 @@ $("form[name='searchForm']").validate(
 
 var datosGlobales = '';
 $(document).ready( () => {
-   llamaralAjax();
+   //llamaralAjax();
 });
 
 
@@ -80,7 +72,7 @@ function getProduct(id, thumbnail) {
         method: "GET",
         url: urlProduct
     }).done((data) => {
-        
+
         $('.description').html(data.plain_text);
         $('#thumbnail').attr('src', thumbnail);
         $('#productModal').modal('show');
