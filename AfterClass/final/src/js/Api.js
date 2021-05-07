@@ -5,7 +5,7 @@ class Api {
         this._data = null;
         this._result = [];
     }
-    callApi = () => {
+    callApi = async () => {
         const params = this._getParams();
         $.ajax(params)
         .done( (data) => {
@@ -24,7 +24,7 @@ class Api {
             method : this._method,
             url: this._uri
         }
-        if(data !== null){
+        if(this._data !== null){
             params.data = this._data;
         }
         return params;

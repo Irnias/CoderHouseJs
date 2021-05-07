@@ -1,24 +1,24 @@
-import DomBuilder from './DomBuilder';
-import Api from './Api';
-
-function getProduct(id, thumbnail) {
-
-    const urlProduct = `https://api.mercadolibre.com/items/${id}/description`;
-    $.ajax({
-        method: "GET",
-        url: urlProduct
-    }).done((data) => {
-
-        $('.description').html(data.plain_text);
-        $('#thumbnail').attr('src', thumbnail);
-        $('#productModal').modal('show');
-
-    }).fail((error) => {
-        console.log(error);
-    });
-}
+import DomBuilder from './DomBuilder.js';
+import Api from './Api.js';
 
 $(document).ready(() => {
+
+    const getProduct = (id, thumbnail) => {
+        const urlProduct = `https://api.mercadolibre.com/items/${id}/description`;
+        $.ajax({
+            method: "GET",
+            url: urlProduct
+        }).done((data) => {
+
+            $('.description').html(data.plain_text);
+            $('#thumbnail').attr('src', thumbnail);
+            $('#productModal').modal('show');
+
+        }).fail((error) => {
+            console.log(error);
+        });
+    }
+
     const URL = 'https://api.mercadolibre.com/sites/MLA/search';
     const domBuilder = new DomBuilder();
     const api = new Api(URL,'POST');
@@ -39,8 +39,10 @@ $(document).ready(() => {
         submitHandler: function (event) {
             const keySearch = event.elements.search.value;
             api.setData({ q : keySearch });
-            api.callApi();
-            domBuilder.renderProducts(api.getResult(),parent);
+            api.callApi().then( () =>
+                domBuilder.renderProducts(api.getResult(),parent)
+            );
+
         }
     })
 })

@@ -20,11 +20,10 @@ class DomBuilder{
 
     renderProducts = (products,parent) => {
         this.clearDom(parent);
-        parent.forEach(product => {
+        products.forEach(product => {
             parent.append(this.getCardHtml(product));
         });
     }
-
 }
 
 export default DomBuilder;
